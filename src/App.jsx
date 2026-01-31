@@ -4,7 +4,8 @@ function App() {
   
 return (
    <div>
-       <State/>
+      
+       <EffectHook/>
 
    </div>
 
@@ -14,17 +15,35 @@ return (
 }
 
 function State(){
-  const [isVisibal , setisVisibal] = useState(true);
+  const [Count , setCount] = useState(true);
 
-  function toggle(){
-    setisVisibal(!isVisibal);
+  function increaseCount(){
+    setCount(Count + 1)
   }
 
   return (
   
     <div>
-       {isVisibal && <p >hii i am toggled</p>}
-       <button onClick={toggle}>click me to toggle</button>
+      <p>{Count}</p>
+      <button onClick={increaseCount}>increase Count</button>
+    </div>
+ )
+}
+
+function EffectHook(){
+  const [Count , setCount] = useState(true);
+
+  function increaseCount(){
+    setCount(currcount => currcount + 1)
+  }
+
+  useEffect(function(){
+    setInterval(increaseCount,1000)
+  }, [])
+  return (
+  
+    <div>
+      {Count}
     </div>
  )
 }
