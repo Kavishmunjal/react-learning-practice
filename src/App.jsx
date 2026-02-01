@@ -1,17 +1,30 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import {BrowserRouter,Routes,Route} from "react-router-dom"
 
 function App() {
   
 return (
-   <div>
-      
-       <EffectHook/>
-
-   </div>
+  <>
+     <BrowserRouter>
+        <Routes>
+           <Route path="/" element={<Home/>}/>
+           <Route path="/add-count" element={<State/>}/>
+           <Route path="/countdown" element={<EffectHook/>}/>
+        </Routes>
+     </BrowserRouter>  
+  
+  
+  </>
 
 
 )
   
+}
+
+function Home(){
+  return ( <div>
+       welcome to single page application 
+  </div>)
 }
 
 function State(){
@@ -47,5 +60,6 @@ function EffectHook(){
     </div>
  )
 }
+
 
 export default App
