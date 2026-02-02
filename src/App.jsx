@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 
 function App() {
   
 return (
   <>
+
+  <Userefhook/>
      <BrowserRouter>
+     <br />
+     <br />
        <Link to="/">home</Link>
        |
        <Link to="/add-count">add count</Link>
@@ -23,6 +27,31 @@ return (
 
 
 )
+
+function Userefhook(){
+  const [count , currentcount] = useState(0);
+  const timer = useRef();
+
+  function startClock(){
+    let value = setInterval(function(){
+      currentcount(a=>a+1);
+    },1000)
+
+     timer.current = value;
+  }
+
+  function stopClock(){
+    clearInterval(timer.current);
+  }
+
+  return (
+    <div>
+       {count}
+       <button onClick={startClock}>start</button>
+       <button onClick={stopClock}>stop</button>
+    </div>
+  )
+}
   
 }
 
