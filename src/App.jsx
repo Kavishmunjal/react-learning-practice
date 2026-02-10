@@ -2,32 +2,32 @@ import { useEffect, useRef, useState } from "react";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 
 function App() {
-  
+  const {count , increaseCount} = useCounter();
 return (
   <>
-
-  <Userefhook/>
-     <BrowserRouter>
-     <br />
-     <br />
-       <Link to="/">home</Link>
-       |
-       <Link to="/add-count">add count</Link>
-       |
-       <Link to="countdown">Countdown</Link>
-        <Routes>
-           <Route path="/" element={<Home/>}/>
-           <Route path="/add-count" element={<State/>}/>
-           <Route path="/countdown" element={<EffectHook/>}/>
-        </Routes>
-     </BrowserRouter>  
-  
+   <h1>{count}</h1>
+   <button onClick={increaseCount}>increase</button>  
   
   </>
 
 
 )
 
+//custom Hook
+function useCounter(){
+  const [count , setCount] = useState(0);
+
+  function increaseCount(){
+    setCount(count + 1)
+  }
+  return {
+    count : count,
+    increaseCount: increaseCount
+  }
+}
+
+
+//useref hook
 function Userefhook(){
   const [count , currentcount] = useState(0);
   const timer = useRef();
