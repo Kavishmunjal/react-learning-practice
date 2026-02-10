@@ -1,12 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import { useFetch } from "./hooks/usefetch";
-
+import { usePrev } from "./hooks/useprev";
 function App() {
-  const {post} = useFetch('https://jsonplaceholder.typicode.com/posts/1' );
+  const [value , setvalue]= useState(0);
+  const prev =  usePrev(value);
+
 return (
   <>
-    {JSON.stringify(post)} 
+    <h1>current value is {value}</h1>
+    <button onClick={()=>{setvalue((curr) => curr+1)}}>increase me!</button>
+
+    <h1> my prev value was {prev} </h1>
   
   </>
 
