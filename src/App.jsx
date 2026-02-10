@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
+import { useFetch } from "./hooks/usefetch";
 
 function App() {
-  const {count , increaseCount} = useCounter();
+  const {post} = useFetch('https://jsonplaceholder.typicode.com/posts/1' );
 return (
   <>
-   <h1>{count}</h1>
-   <button onClick={increaseCount}>increase</button>  
+    {JSON.stringify(post)} 
   
   </>
 
